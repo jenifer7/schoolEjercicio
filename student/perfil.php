@@ -14,6 +14,7 @@
 $fecha_actual = strtotime(date("Y-m-d",time()));
 $ed = ['end_date'];
 $id = $_GET['id'];
+$est;
 
 $uno = "select s.codigo as Codigo, s.fullname as Name, round(year(now())-year(birthdate)) as Age
         from student s where s.id = '$id'";
@@ -24,10 +25,6 @@ $sql = "select st.codigo as Codigo, st.fullname as Name,round(year(now())-year(s
         where sy.year_id = y.id and sy.subject_id = sb.id
         and sby.subject_year_id = sy.id
         and sby.student_id = st.id and st.id = '$id'";
-
-if($fecha_actual > $ed){
-
-}
 
 
 if($db_con){
@@ -52,6 +49,15 @@ echo  "<table class='table is-family-code'>" .
       " </thead> " ;
 
       foreach ($result as $value) {
+
+        if($fecha_actual > $ed){
+
+        }else {
+
+        }
+
+
+
        echo "<tr>" .
             "<td>" . $value['Subject'] . "</td>" .
             "<td>" . $value['Ciclo'] . "</td>" .
