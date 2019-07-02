@@ -4,10 +4,16 @@
 <div class="hero is-fullheight is-light">
     <div class="hero-body">
             <?php require_once('templates/pag.php'); ?>
-        <div class="container">
-        <h1 class="title is-3">EDUCA</h1>
+
+        <div class="column">
+        <div class="column"> </div>
+        <div class="column">
+          <div class="column">
+            <h1 class="title is-3">EDUCA</h1>
             <h2 class="subtitle">Seleccione una opción</h2>
+          </div>
         </div>
+      </div>
     </div>
 </div>
 

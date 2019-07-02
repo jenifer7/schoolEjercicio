@@ -1,7 +1,11 @@
 <?php require_once('../templates/header.php'); ?>
 <?php require_once('../templates/navbar.php'); ?>
-</div>
+
+
+<div class="control">
+<div class="control is-grouped is-pulled-right">
 <input onClick=location.href='../index.php' class="button is-info is-outlined" type="submit" name="salir" value="Back">
+</div>
 </div>
 <?php require_once('../src/database/connection.php');
 

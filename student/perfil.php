@@ -4,17 +4,18 @@
 <div class="columns">
 <div class="column"></div>
   <div class="column is-three-quarters">
-    <div class="column"></div>
-      <div class="column"></div>
       <div class="control is-grouped is-pulled-right">
         <input class="button is-info is-outlined" type="button" name="imprimir" value="Constancy Print">
         <input class="button is-info is-outlined" type="button" name="asignar" value="Assign">
       </div>
 <?php require_once('../src/database/connection.php');
-$fecha_actual = strtotime(date("Y-m-d",time()));
-$ed = ['end_date'];
+
+
 $id = $_GET['id'];
+$fecha_actual = date("Y-m-d",time());
+$ed = ['end_date'];
 $est;
+$sco;
 
 $uno = "select s.codigo as Codigo, s.fullname as Name, round(year(now())-year(birthdate)) as Age
         from student s where s.id = '$id'";
@@ -33,7 +34,7 @@ if($db_con){
       foreach ($result as $values) {
         echo  "<h1>". $values['Name'] ."</h1>" .
               "<h1>". $values['Codigo'] . "</h1>" .
-              "<h1>". $values['Age'] . "</h1>";
+              "<p>". $values['Age'] . "Años" ."</p>";
               break 1;
       }
     }
@@ -50,19 +51,23 @@ echo  "<table class='table is-family-code'>" .
 
       foreach ($result as $value) {
 
-        if($fecha_actual > $ed){
-
+        if($fecha_actual < $ed){
+          $est = "Finalizado";
         }else {
-
+          $est = "En Curso";
         }
 
-
+        if($est == "En Curso"){
+          $sco = "NI";
+        }else {
+          $sco = $value['Nota'];
+        }
 
        echo "<tr>" .
             "<td>" . $value['Subject'] . "</td>" .
             "<td>" . $value['Ciclo'] . "</td>" .
-            "<td>" . $value['Estado'] . "</td>" .
-            "<td>" . $value['Nota'] . "</td>" .
+            "<td>" . $est . "</td>" .
+            "<td>" . $sco . "</td>" .
             "</tr>";
         }
       echo "</table>" ;
